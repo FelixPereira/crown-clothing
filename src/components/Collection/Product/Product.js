@@ -2,11 +2,19 @@ import React from 'react';
 
 const Product = ({ product }) => {
   return(
-    <section>
-      <h3>{ product.title }</h3>
+    <section className='collection'>
+      <h3 className='collection__title'>{ product.title }</h3>
       {
         product.items.map(item => (
-          <img key={item.id} src={item.imageUrl} alt={product.items.name} />
+          <div className='collection__innerSection'>
+            <article key={item.id} className='collection__product'>
+            <img src={item.imageUrl} alt={product.items.name} width='250' />
+            <div>
+              <h4>{item.name}</h4>
+              <h4>{item.price}</h4>
+            </div>
+          </article>
+          </div>
         ))
       }
     </section>

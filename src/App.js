@@ -1,7 +1,11 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import './App.css';
-import HomePage from './pages/homepage/homepage';
-import Shop from './pages/Shop/shopPage'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import Header from './components/header/Header';
+import HomePage from './pages/homePage/HomePage';
+import ShopPage from './pages/shop/ShopPage';
 
 
 
@@ -9,10 +13,11 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Link to='/'>Home</Link>
-        <Link to='/shop'>Shop</Link>
-        <Route exact path="/" component={ HomePage } />
-        <Route path="/shop" component={ Shop } />
+        <Header />
+        <Switch>
+          <Route exact path="/" component={ HomePage } />
+          <Route exact path='/shop' component={ ShopPage } />
+        </Switch>
       </div>
     </Router>
   );

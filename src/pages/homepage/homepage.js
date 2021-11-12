@@ -1,9 +1,9 @@
 import React from 'react';
 import './homepage.scss';
-import Directory from '../../components/directory/directory';
+import Directory from '../../components/directory/Directory';
 
 
-const homepage = (props) => {
+const HomePage = (props) => {
   return(
     <div className='homepage'>
       <Directory />
@@ -11,4 +11,4 @@ const homepage = (props) => {
   )
 }
 
-export default homepage;
+export default HomePage;

@@ -1,5 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 
 
 const config = {
@@ -15,15 +17,34 @@ firebase.initializeApp(config);
 
 
 export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+export const createUserDocument = async (user) => {
+  if(!user) {
+    return;
+  }
+
+  const userRef = firestore.doc(`user/${user.uid}`);
+  const snapshot = await userRef.get();
+
+  if(!snapshot.exists) {
+    const {displayName, email} = user;
+    const createdDate = new Date();
+
+    userRef.set({
+      displayName,
+      email,
+      createdDate
+    })
+  }
+
+  return userRef;
+} 
+
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
-.then((res) => {
-  console.log(res);
-}).catch((err) => {
-  console.log(err);
-})
 }
 
 

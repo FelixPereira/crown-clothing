@@ -19,19 +19,23 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-export const createUserDocument = async (user) => {
-  if(!user) {
-    return;
-  }
+export const signInWithGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
 
-  const userRef = firestore.doc(`user/${user.uid}`);
+}
+
+export const createDocument = async (userAuth) => {
+  if(!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapshot = await userRef.get();
 
   if(!snapshot.exists) {
-    const {displayName, email} = user;
+    const {displayName, email} = userAuth;
     const createdDate = new Date();
 
-    userRef.set({
+    await userRef.set({
       displayName,
       email,
       createdDate
@@ -39,12 +43,6 @@ export const createUserDocument = async (user) => {
   }
 
   return userRef;
-} 
-
-
-export const signInWithGoogle = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
 }
 
 

@@ -30,13 +30,17 @@ class App extends React.Component {
 
         userRef.onSnapshot(snapshot => {
           this.setState({
-            currentUser: snapshot.data()
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data()
+            }
           }, () => console.log(this.state.currentUser))
         })
+      } else {
+        this.setState({currentUser: null});
       }
     })
   }
-
 
 
   componentWillUnmount() {

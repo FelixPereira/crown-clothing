@@ -25,7 +25,7 @@ export const signInWithGoogle = () => {
 
 }
 
-export const createDocument = async (userAuth) => {
+export const createDocument = async (userAuth, ...extraUserInfo) => {
   if(!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);

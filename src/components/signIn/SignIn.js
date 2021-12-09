@@ -5,7 +5,6 @@ import './signIn.scss';
 import CustomButton from '../customButton/CustomButton';
 import {auth, signInWithGoogle} from '../../firebase/firebase';
 
-
 class SignIn extends React.Component {
   constructor() {
     super();
@@ -15,7 +14,6 @@ class SignIn extends React.Component {
       password: ''
     }
   }
-
 
   handleSubmit = async event => {
     event.preventDefault(); 

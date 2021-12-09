@@ -2,8 +2,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-
-
 const config = {
   apiKey: "AIzaSyCODqNP2wJieN84oEuuVQ6tOBbUjvcOz9M",
   authDomain: "crwn-db-49bba.firebaseapp.com",
@@ -15,14 +13,16 @@ const config = {
 
 firebase.initializeApp(config);
 
-
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
-
+  try{
+    auth.signInWithPopup(provider);
+  } catch(error) {
+    console.log(error);
+  }
 }
 
 export const createDocument = async (userAuth, ...extraUserInfo) => {

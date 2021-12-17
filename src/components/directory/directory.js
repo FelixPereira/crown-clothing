@@ -8,7 +8,7 @@ class Directory extends React.Component {
     super();
       this.state = {
         sections: SECTIONS_DATA
-    }
+      }
   }
   
   render() {

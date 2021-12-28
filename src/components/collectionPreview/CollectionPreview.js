@@ -11,14 +11,11 @@ const CollectionPreview = ({ title, items, routeName, history}) => {
       {/* <h3 onClick={history.push(`${routeName}`)}>{title}</h3> */}
       <h3 className='title'><Link to={`${routeName}`}>{title.toUpperCase()}</Link></h3>
       <section className='preview'>
-        {
-          items
+        {items
             .filter((item, idx) => idx < 4)
-            .map(({id, ...item}) => (
-            <CollectionItem key={id} {...item} />
-            
-              ))
-        }
+            .map(item => (
+              <CollectionItem key={item.id} item={item} />
+            ))}
       </section>
     </section>
   )

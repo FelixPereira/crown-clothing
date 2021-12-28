@@ -11,7 +11,7 @@ import SignInAndSignUpPage from './pages/signIn-signUp-page/signIn-signUp-page';
 
 import { auth, createDocument } from './firebase/firebase';
 
-import { setCurrentUser } from './redux/user/action';
+import { setCurrentUser } from './redux/user/actions';
 
 
 class App extends React.Component {

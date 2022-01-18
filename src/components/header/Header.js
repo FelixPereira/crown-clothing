@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 import './header.scss';
 
 import CartIcon from '../cart-icon/cart-icon';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, display }) => {
   return(
     <header className='header'>
       <Link className='logo-container' to='/'>
@@ -25,12 +26,19 @@ const Header = ({ currentUser }) => {
         
         <CartIcon />
       </div>
+      {
+        display ? 
+          <CartDropdown />
+        : null
+      }
+      
     </header>
   )
 } 
 
 const mapStateToProp = (state) => ({
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  display: state.cart.display
 })
 
 export default connect(mapStateToProp)(Header);

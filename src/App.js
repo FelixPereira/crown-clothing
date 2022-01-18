@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import Header from './components/header/Header';
-import HomePage from './pages/homePage/HomePage';
-import ShopPage from './pages/shop/ShopPage';
+import HomePage from './pages/homepage/HomePage';
+import ShopPage from './pages/Shop/shopPage';
 import SignInAndSignUpPage from './pages/signIn-signUp-page/signIn-signUp-page';
 
 import { auth, createDocument } from './firebase/firebase';
 
-import { setCurrentUser } from './redux/user/action';
+import { setCurrentUser } from './redux/user/actions';
 
 
 class App extends React.Component {

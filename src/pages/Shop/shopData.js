@@ -272,13 +272,7 @@ const SHOP_DATA = [
         imageUrl: "/images/shop-img/mens/roll-up-jean-shirt.png",
         price: 40
       },
-      {
-        id: 35,
-        name: 'Burgundy T-shirt',
-        // imageUrl: 'https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',
-        imageUrl: "/images/shop-img/mens/polka-dot-shirt.png",
-        price: 25
-      }
+       
     ]
   }
 ];

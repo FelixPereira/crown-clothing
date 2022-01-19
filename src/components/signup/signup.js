@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './signup.scss';
+import './signup.css';
 
 import { auth, createDocument } from '../../firebase/firebase';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './signIn-signUp-page.scss';
+import './signIn-signUp-page.css';
 
 import SignIn from '../../components/signIn/SignIn';
 import SignUp from '../../components/signup/signup';

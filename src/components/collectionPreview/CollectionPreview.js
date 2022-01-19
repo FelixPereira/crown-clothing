@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
-import './collectionPreview.scss';
+import './collectionPreview.css';
 import CollectionItem from '../collectionItem/CollectionItem';
 
 

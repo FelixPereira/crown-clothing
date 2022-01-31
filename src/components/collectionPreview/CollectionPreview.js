@@ -4,7 +4,6 @@ import { withRouter, Link } from 'react-router-dom';
 import './collectionPreview.css';
 import CollectionItem from '../collectionItem/CollectionItem';
 
-
 const CollectionPreview = ({ title, items, routeName, history}) => {
   return(
     <section className='collection-preview'>

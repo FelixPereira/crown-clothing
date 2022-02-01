@@ -13,6 +13,7 @@ import CheckoutPage from './pages/checkoutPage/checkoutPage';
 import { auth, createDocument } from './firebase/firebase';
 import { setCurrentUser } from './redux/user/actions';
 
+import CategoryPage from './pages/categorypage/categoryPage';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -47,6 +48,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={ HomePage } />
             <Route exact path='/shop' component={ ShopPage } />
+              <Route path='/shop/:categoryId' component={CategoryPage} />
             <Route exact path='/checkout' component={CheckoutPage} />
             <Route exact path='/signin' render={ 
               () => this.props.currentUser ? 

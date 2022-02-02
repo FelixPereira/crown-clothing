@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { auth, createDocument } from './firebase/firebase';
+import { setCurrentUser } from './redux/user/actions';
 
 import './App.css';
 
@@ -9,11 +11,7 @@ import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/Shop/shopPage';
 import SignInAndSignUpPage from './pages/signIn-signUp-page/signIn-signUp-page';
 import CheckoutPage from './pages/checkoutPage/checkoutPage';
-
-import { auth, createDocument } from './firebase/firebase';
-import { setCurrentUser } from './redux/user/actions';
-
-import CategoryPage from './pages/categorypage/categoryPage';
+import CollectionPage from './pages/collectionpage/collectionPage';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -48,7 +46,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={ HomePage } />
             <Route exact path='/shop' component={ ShopPage } />
-              <Route path='/shop/:categoryId' component={CategoryPage} />
+              <Route path='/shop/:categoryId' component={CollectionPage} />
             <Route exact path='/checkout' component={CheckoutPage} />
             <Route exact path='/signin' render={ 
               () => this.props.currentUser ? 

@@ -6,19 +6,23 @@ import CollectionItem from '../../components/collectionItem/CollectionItem';
 import './collectionPage.css';
 
 const CollectionPage = ({collection}) => {
+  const {items, title} = collection;
   return (
-    <div className='category'>
-      {
-        collection.items.map(items => (
-          <CollectionItem  item={items} />
-        ))
-      }
+    <div className='collection-page'>
+      <h2 className='collection-title'>{title}</h2>
+      <div className='items'>
+        {
+          items.map(item => (
+            <CollectionItem item={item} key={item.id}/>
+          ))
+        }
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state, ownProp) => ({
-  collection: selectCollection(ownProp.match.params.categoryId)(state)
+  collection: selectCollection(ownProp.match.params.categoryUrl)(state)
 });
 
 export default connect(mapStateToProps)(CollectionPage);

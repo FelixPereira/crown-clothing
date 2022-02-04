@@ -6,7 +6,6 @@ const SECTIONS_DATA = [
         imageUrl: 'images/hats.png', // local file in public/images/
         id: 1,
         linkUrl: 'shop/hats'
-
     },
     {
         title: 'jackets',

@@ -45,5 +45,4 @@ export const createDocument = async (userAuth, ...extraUserInfo) => {
   return userRef;
 }
 
-
 export {firebase};

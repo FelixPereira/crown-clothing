@@ -8,6 +8,6 @@ const CustomButton = ({ children, signInWithGoogle, invert, ...otherProp }) => {
       {children}
     </button>
   )
-}
+};
 
 export default CustomButton;

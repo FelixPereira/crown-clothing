@@ -41,11 +41,11 @@
   font-size: 18px;
 }
 
-.name {
+.collection-footer .name {
   width: 90%;
   margin-bottom: 15px;
 }
 
-.price {
+.collection-footer .price {
   width: 10%;
 }

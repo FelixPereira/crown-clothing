@@ -97,7 +97,7 @@ class SignUp extends React.Component {
             onChange={this.handleChangge}
           />
 
-          <CustomButton type='submit'>SIGN UP</CustomButton>
+          <CustomButton invert type='submit'>SIGN UP</CustomButton>
         </form>
 
       </div>

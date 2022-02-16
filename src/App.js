@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { auth, createDocument, addCollectionAndDocuments } from './firebase/firebase';
 import { setCurrentUser } from './redux/user/actions';
-import { selectCurrentUser } from './redux//user/userSelectors';
-import { selectCollectionsPreview } from './redux//shop/shopSelector';
+import { selectCurrentUser } from './redux/user/userSelectors';
+import { selectCollectionsPreview } from './redux/shop/shopSelector';
 
 import './App.css';
 
@@ -16,7 +16,6 @@ import SignInAndSignUpPage from './pages/signIn-signUp-page/signIn-signUp-page';
 import CheckoutPage from './pages/checkoutPage/checkoutPage';
 import CollectionPage from './pages/collectionpage/collectionPage';
 
-import SHOP_DATA from './pages/Shop/shopData';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -37,7 +36,7 @@ class App extends React.Component {
         setCurrentUser(userAuth);
       }
 
-      // addCollectionAndDocuments('collections', SHOP_DATA)
+      //addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items})))
     })
   }
 
@@ -70,10 +69,10 @@ class App extends React.Component {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   collectionsArray: selectCollectionsPreview
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

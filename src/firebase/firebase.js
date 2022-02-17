@@ -58,9 +58,22 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   return await batch.commit();
 };
 
-const convertCollectioSnapshot = snapshot => {
-  snap
+export const convertCollectionSnapshotToMap = collections => {
+  const transformedSnapshot = collections.docs.map(doc => {
+    const {title, items} = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    }
+  });
+
+  return transformedSnapshot.reduce((acomulator, collection) => {
+    acomulator[collection.title.toLowerCase()] = collection;
+    return acomulator;
+  }, {});
 };
 
 
-export {fireba
+export {firebase};

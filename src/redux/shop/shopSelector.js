@@ -16,5 +16,5 @@ export const selectCollectionsPreview = createSelector(
 export const selectCollection = categoryUrl => 
   createSelector(
     [selectCollections],
-    collections => collections[categoryUrl]
+    collections => collections ? collections[categoryUrl] : null
   );

@@ -11,10 +11,10 @@ const CollectionPreview = ({ title, items, routeName, history}) => {
       <h3 className='title'><Link to={`shop/${title.toLowerCase()}`}>{title.toUpperCase()}</Link></h3>
       <section className='preview'>
         {items
-            .filter((item, idx) => idx < 4)
-            .map(item => (
-              <CollectionItem key={item.id} item={item} />
-            ))}
+          .filter((item, idx) => idx < 4)
+          .map(item => (
+            <CollectionItem key={item.id} item={item} />
+          ))}
       </section>
     </section>
   )

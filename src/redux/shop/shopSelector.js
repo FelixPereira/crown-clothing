@@ -10,8 +10,7 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsPreview = createSelector(
   [selectCollections],
-  collections => Object.keys(collections).map(keys => collections[keys])
-
+  collections => collections ?  Object.keys(collections).map(keys => collections[keys]) : []
 );
 
 export const selectCollection = categoryUrl => 

@@ -14,7 +14,7 @@ import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/Shop/shopPage';
 import SignInAndSignUpPage from './pages/signIn-signUp-page/signIn-signUp-page';
 import CheckoutPage from './pages/checkoutPage/checkoutPage';
-import CollectionPage from './pages/collectionpage/collectionPage';
+import CollectionPage from './pages/collectionpage/collectionP';
 
 
 class App extends React.Component {

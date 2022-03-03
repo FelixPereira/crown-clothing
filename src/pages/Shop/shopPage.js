@@ -47,12 +47,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);
-
-/*
-.sign-up {
-  display: flex;
-  flex-direction: column;
-  width: 380px;
-}
-
-*/

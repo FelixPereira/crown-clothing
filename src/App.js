@@ -14,7 +14,7 @@ import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/Shop/shopPage';
 import SignInAndSignUpPage from './pages/signIn-signUp-page/signIn-signUp-page';
 import CheckoutPage from './pages/checkoutPage/checkoutPage';
-import CollectionPage from './pages/collectionpage/collectionPage';
+import CollectionPageContainer from './pages/collectionpage/collectionPage';
 
 
 class App extends React.Component {
@@ -52,7 +52,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={ HomePage } />
             <Route exact path='/shop' component={ ShopPage } />
-              <Route path='/shop/:categoryUrl' component={CollectionPage} />
+              <Route path='/shop/:categoryUrl' component={CollectionPageContainer} />
             <Route exact path='/checkout' component={CheckoutPage} />
             <Route exact path='/signin' render={ 
               () => this.props.currentUser ? 

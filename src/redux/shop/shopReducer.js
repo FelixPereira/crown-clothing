@@ -1,4 +1,3 @@
-// import SHOP_DATA from '../../pages/Shop/shopData';
 import { shopActionsTypes } from './shopActionsTypes';
 
 const INITIAL_STATE = {
@@ -29,7 +28,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
 
     default:
     return state;
-  };
+  }
 };
 
 export default shopReducer;

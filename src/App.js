@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { auth, createDocument, addCollectionAndDocuments } from './firebase/firebase';
 import { setCurrentUser } from './redux/user/actions';
@@ -17,9 +17,14 @@ import CheckoutPage from './pages/checkoutPage/checkoutPage';
 import CollectionPageContainer from './pages/collectionpage/collectionPage';
 
 
-const App = ({setCurrentUser, collectionsArray }) => {
+const App = () => {
+  const currentUser = useSelector(selectCurrentUser);
+  const collectionsArray = useSelector(selectCollectionsPreview);
+  const setCurrentUser = useDispatch();
+  
   let unsubscribeFromAuth = null;
   
+  /*
   useEffect(() => {
     unsubscribeFromAuth = auth.onAuthStateChanged( async userAuth => {
       if(userAuth) {
@@ -33,13 +38,14 @@ const App = ({setCurrentUser, collectionsArray }) => {
         })
       } else {
         setCurrentUser(userAuth);
-    })
+      }
       //addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items})))
     }
-    return () => {
+    /* return () => {
       unsubscribeFromAuth = null;
-    };
-  }, []);
+    }; 
+  }, []); 
+  */
 
   return (
     <Router>
@@ -51,7 +57,7 @@ const App = ({setCurrentUser, collectionsArray }) => {
             <Route path='/shop/:categoryUrl' component={CollectionPageContainer} />
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route exact path='/signin' render={ 
-            () => this.props.currentUser ? 
+            () => currentUser ? 
             <Redirect to='/' /> 
             : <SignInAndSignUpPage />  
           } />
@@ -61,13 +67,8 @@ const App = ({setCurrentUser, collectionsArray }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  collectionsArray: selectCollectionsPreview
-});
-
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

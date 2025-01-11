@@ -25,13 +25,13 @@ const Header = () => {
         <Logo />
       </LogoContainer>
       <OptionsContainer>
-        <LinkOption to='/shop'>SHOP</LinkOption>
+        <LinkOption to='/shop'>SHOPs</LinkOption>
         <LinkOption to='#'>CONTACT</LinkOption>
         {
           currentUser ? 
             <LinkOption as='div' onClick={() => auth.signOut()}>SIGN OUT</LinkOption>
           : <LinkOption to='/signin'>SIGN IN</LinkOption>
-        };
+        }
         
         <CartIcon />
       </OptionsContainer>
@@ -39,7 +39,7 @@ const Header = () => {
         display ? 
           <CartDropdown />
         : null
-      };
+      }
       
     </HeaderContainer>
   );

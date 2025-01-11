@@ -7,7 +7,9 @@ import {auth, signInWithGoogle} from '../../firebase/firebase';
 
 const SignIn = () => {
   const [ userCredentials, setUserCredentials ] = useState({
-    email: '', password: ''});
+    email: '', 
+    password: ''
+  });
 
   const {email, password} = userCredentials;
   

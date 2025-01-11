@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -10,11 +10,13 @@ import { selectCollectionsPreview } from './redux/shop/shopSelector';
 import './App.css';
 
 import Header from './components/header/Header';
-import HomePage from './pages/homepage/homepage';
-import ShopPage from './pages/Shop/shopPage';
-import SignInAndSignUpPage from './pages/signIn-signUp-page/signIn-signUp-page';
-import CheckoutPage from './pages/checkoutPage/checkoutPage';
-import CollectionPageContainer from './pages/collectionpage/collectionPage';
+
+const HomePage = lazy(() => import('./pages/homepage/homepage'));
+const ShopPage = lazy(() => import('./pages/Shop/shopPage'));
+const SignInAndSignUpPage = lazy(() => import('./pages/signIn-signUp-page/signIn-signUp-page'));
+const CheckoutPage = lazy(() => import('./pages/checkoutPage/checkoutPage'));
+const CollectionPageContainer = lazy(() => import('./pages/collectionpage/collectionPage'));
+
 
 
 const App = () => {
@@ -52,15 +54,17 @@ const App = () => {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/" component={ HomePage } />
-          <Route exact path='/shop' component={ ShopPage } />
-            <Route path='/shop/:categoryUrl' component={CollectionPageContainer} />
-          <Route exact path='/checkout' component={CheckoutPage} />
-          <Route exact path='/signin' render={ 
-            () => currentUser ? 
-            <Redirect to='/' /> 
-            : <SignInAndSignUpPage />  
-          } />
+          <Suspense fallback="...Loading">
+            <Route exact path="/" component={ HomePage } />
+            <Route exact path='/shop' component={ ShopPage } />
+              <Route path='/shop/:categoryUrl' component={CollectionPageContainer} />
+            <Route exact path='/checkout' component={CheckoutPage} />
+            <Route exact path='/signin' render={ 
+              () => currentUser ? 
+              <Redirect to='/' /> 
+              : <SignInAndSignUpPage />  
+            } />
+          </Suspense>
         </Switch>
       </div>
     </Router>
